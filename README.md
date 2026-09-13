@@ -12,7 +12,10 @@ Deploy to Vercel in 2 mins -> lazyjobhunt.ai
 - Custom locations worldwide (Gurgaon, India support)
 - Live job fetching (Arbeitnow + Remotive APIs)
 - ATS resume generation per job with auto-download Company_JobTitle_ATS_Resume_Date.txt
-- Auto-apply with 2-free limit + discounted pricing $5/50, $9/100, $49/unlimited (owner editable)
+- Auto-apply with plan-enforced limits (owner editable):
+  - Free — $0 one-time, 2 applications
+  - Starter — $19/mo, 100 applications/month
+  - Unlimited — $49/mo, unlimited applications
 - Post-apply loop: Find More Jobs
 
 ## Tech Stack
@@ -20,11 +23,20 @@ Deploy to Vercel in 2 mins -> lazyjobhunt.ai
 - Backend (optional for real auto-apply): Python + Playwright + JobSpy
 
 ## Pricing (Editable by Owner)
-- Starter: $5/mo (was $19) - 50 apps
-- Pro: $9/mo (was $49) - 100 apps - Most Popular
-- Unlimited: $49/mo (was $99)
+- Free: $0 one-time - 2 applications
+- Starter: $19/mo - 100 applications/month - Most Popular
+- Unlimited: $49/mo - unlimited applications
 
-Owner mode: Triple-click logo -> password lazyowner123
+Owner mode: Triple-click logo -> password lazyowner123 -> edit price/cap inline in the pricing modal.
+Note: the demo enforces these caps client-side (localStorage) for the prototype. Before charging real
+money, move plan selection + usage tracking to a backend tied to Stripe subscriptions — a client-side
+cap can be bypassed by clearing browser storage.
+
+## Security note on job-portal connections
+The "Connect job portal" step in this build never stores your LinkedIn/Naukri/etc. password — the field
+is cleared from memory immediately after the simulated connection. Real automated login to third-party
+job sites can violate their Terms of Service and risks account restrictions. For production, prefer each
+platform's official OAuth/API integration, or a backend automation service the user explicitly authorizes.
 
 ## Quick Start Locally
 Just open index.html in browser - works 100% frontend-only.

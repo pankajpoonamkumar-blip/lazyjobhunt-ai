@@ -51,7 +51,15 @@ After deploy:
 
 ## Owner Pricing Edit
 - Normal users: Read-only pricing
-- Owner: Triple-click logo 3x fast -> password: lazyowner123 -> Edit pricing -> Save (stored in localStorage, for production move to Supabase)
+- Owner: Triple-click logo 3x fast -> password: lazyowner123 -> Edit price/cap inline in the pricing modal -> stored in localStorage
+- For production: move plan definitions + usage tracking to a real backend/database (e.g. Supabase or Postgres)
+  tied to Stripe subscriptions. Client-side storage can be cleared by the user, so it's fine for a prototype
+  but not for enforcing real billing limits.
+
+## Pricing Tiers (current)
+- Free: $0 one-time, 2 job applications
+- Starter: $19/month, 100 job applications/month
+- Unlimited: $49/month, unlimited job applications
 
 ## Future Enhancements
 Tell Meta AI: "Enhance v12 with interview prep" -> We iterate.
